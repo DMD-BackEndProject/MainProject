@@ -96,7 +96,7 @@ DB의 화장품 데이터를 기반으로 **개인 맞춤 추천**을 제공하�
 > 📌 여기에 UI 캡처 이미지 넣으면 포트폴리오 완성도가 올라갑니다!
 
 ```
-📍 ![홈 화면](<img width="1917" height="908" alt="Image" src="https://github.com/user-attachments/assets/ee25aa42-ab7a-4d5d-8169-820b33886057" />) 
+📍 ![홈 화면]<img width="1917" height="908" alt="Image" src="https://github.com/user-attachments/assets/ee25aa42-ab7a-4d5d-8169-820b33886057" />
 📍 이미지 업로드 + AI 분석 화면  
 📍 분석 결과 리포트  
 📍 화장품 추천 목록  
