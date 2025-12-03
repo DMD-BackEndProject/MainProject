@@ -1,0 +1,83 @@
+CREATE DATABASE finaltermproject;
+USE finaltermproject;
+
+/* 회원정보 테이블 */
+CREATE TABLE user (
+    user_id VARCHAR(50) PRIMARY KEY,
+    user_pw VARCHAR(100) NOT NULL,
+    user_name VARCHAR(50) NOT NULL,
+    role VARCHAR(10) DEFAULT 'USER'  -- USER / ADMIN
+);
+
+/* 관리자정보 데이터 */
+INSERT INTO user (user_id, user_pw, user_name, role)
+VALUES ('admin', '1234', '관리자', 'ADMIN');
+
+/* 피부타입 테이블 */
+CREATE TABLE skin_type (
+    type_id INT AUTO_INCREMENT PRIMARY KEY,
+    type_name VARCHAR(30)
+);
+
+/* 피부타입 데이터 */
+INSERT INTO skin_type(type_name)
+VALUES ('건성'), ('지성'), ('복합성'), ('중성');
+
+
+/* 화장품 제품 목록 */
+CREATE TABLE product (
+    product_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(200) NOT NULL,
+    category VARCHAR(50),
+    skin_type VARCHAR(20),       -- 지성 / 건성 / 복합성 / 민감성 / 정상
+    image_url VARCHAR(300),      -- 이미지 경로
+    info TEXT                    -- 간단 설명
+);
+
+INSERT INTO product (name, category, skin_type, image_url, info) VALUES
+('퓨어 클렌징 오일', '클렌저', '건성', '/img/cleanser1.jpg', '돌콩에서 추출한 도톰하고 밀도있는 오일로 딥클렌징'),
+('녹두 약산성 클렌징폼', '클렌저', '지성', '/img/cleanser2.jpg', '녹두로 채우는 모공 자신감 피지까지 말끔 모공'),
+('녹두 클렌징 오일', '클렌저', '복합성', '/img/cleanser3.jpg', '모공 막힘 걱정 없는 블랙헤드 쏙오프'),
+('다시마 앰플 클렌징폼', '클렌저', '민감성', '/img/cleanser4.jpg', '청정해역 다시마가 품은 수분 진정 성분'),
+('세이프 미 릴리프 모이스처 클렌징 밀크', '클렌저', '정상', '/img/cleanser5.jpg', '수분 지키는 저자극 클렌징 밀크'),
+
+('아쿠아 오아시스 토너', '토너', '건성', '/img/toner1.jpg', '촉촉 진정 수분광 토너'),
+('다이브인 저분자 히알루론산 토너', '토너', '지성', '/img/toner2.jpg', '첫 단계 산뜻 수분 충전 수분결 토너'),
+('원더 세라마이드 모찌 토너', '토너', '복합성', '/img/toner3.jpg', '보습부터 케어까지 원샷 원킬 토너'),
+('1025 독도 토너', '토너', '민감성', '/img/toner4.jpg', '자극없는 순한 케어 국민 토너'),
+('캐롯 카로틴 카밍 워터 패드', '토너', '정상', '/img/toner5.jpg', '진정한 당근의 힘으로 수분듬뿍, 당근진정'),
+
+('PDRN 히알루론산 캡슐 100 세럼', '세럼', '건성', '/img/serum1.jpg', '피부 속부터 차오르는 광채 플럼핑 세럼'),
+('다이브인 저분자 히알루론산 세럼', '세럼', '지성', '/img/serum2.jpg', '48시간 지속 3중 수분 케어'),
+('데일리 컨셔스 세럼', '세럼', '복합성', '/img/serum3.jpg', '속부터 차오르는 고보습 집중 세럼'),
+('아쿠아 스쿠알란 세럼', '세럼', '민감성', '/img/serum4.jpg', '속수분충전 & 모공 탄력까지, 수분천재세럼'),
+('피디알엔 모공 탄력 세럼', '세럼', '정상', '/img/serum5.jpg', '세럼 한 병에 가득 채운 모공 & 탄력 솔루션'),
+
+('모이스춰 닥터 크림', '크림', '건성', '/img/cream1.jpg', '속보습 100시간 장수진 수분크림'),
+('다이브인 저분자 히알루론산 수딩 크림', '크림', '지성', '/img/cream2.jpg', '수분충전부터 열감진정까지'),
+('녹두 모공 타이트업 수딩 크림', '크림', '복합성', '/img/cream3.jpg', '모공 열 잡고 속 탄력 끌올'),
+('아토베리어365 크림', '크림', '민감성', '/img/cream4.jpg', '민감 피부에 특화된 고밀도 세라마이드'),
+('아쿠아 스쿠알란 수분크림', '크림', '정상', '/img/cream5.jpg', '피지, 모공 싹싹 촉촉함만 남기는 크림');
+
+
+/* 피부 분석 기록 */
+CREATE TABLE skin_history (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    userId VARCHAR(50) NOT NULL,
+    wrinkle INT NOT NULL,
+    pore INT NOT NULL,
+    redness INT NOT NULL,
+    oil INT NOT NULL,
+    tone INT NOT NULL,
+    skinType VARCHAR(20) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+/* 조회 */
+select * from product;
+select * from user;
+select * from skin_type;
+select * from skin_history;
+
+show tables
